@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+*.sqlite3
+*.db
+
+# model artifacts
+*.pkl
+*.joblib
+
+# notebooks
+.ipynb_checkpoints/
+
+# docker
+*.log

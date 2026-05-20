@@ -46,3 +46,20 @@ curl ".../api/optimize_routes?use_llm=true" ...
 ```
 
 The LLM prompt is defined in `app/prompts/optimization_prompt.txt`, and the client configuration lives in `app/services/llm_service.py`.
+
+## Repository structure
+
+```text
+app/
+  api/            # FastAPI routes and schemas
+  agents/         # Allocation, route, traffic, ETA agents and orchestrators
+  ml/             # ETA model training and inference
+  services/       # LLM service (LangChain/OpenAI)
+  prompts/        # LLM prompt templates
+  utils/          # Configuration and logging
+
+data/             # Synthetic telemetry and route data
+tests/            # Unit and API tests
+docs/             # Architecture and diagrams
+docker/           # Dockerfile
+```

@@ -5,6 +5,7 @@ numpy
 scikit-learn
 xgboost
 langchain
+langchain-openai
 langgraph
 openai
 psycopg2-binary

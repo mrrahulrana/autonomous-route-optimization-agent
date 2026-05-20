@@ -34,3 +34,15 @@ This will:
 - Save the trained model to `app/ml/eta_model.joblib`
 
 The synthetic ETA model also incorporates simple route history features such as average historical ETA, number of past trips, and on-time ratio for a given origin-destination pair, reflecting how telemetry-based ETA models are built in production. [file:1]
+
+## LLM-based orchestration
+
+The project includes a LangGraph-based orchestration layer that wraps the classical agents (allocation, traffic, ETA) as tools and uses an OpenAI LLM to generate a concise explanation of the selected route plan. [file:1]
+
+You can enable this path via:
+
+```bash
+curl ".../api/optimize_routes?use_llm=true" ...
+```
+
+The LLM prompt is defined in `app/prompts/optimization_prompt.txt`, and the client configuration lives in `app/services/llm_service.py`.

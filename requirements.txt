@@ -3,6 +3,8 @@ uvicorn[standard]
 pandas
 numpy
 scikit-learn
+matplotlib
+seaborn
 xgboost
 langchain
 langchain-openai

@@ -105,6 +105,21 @@ def build_graph():
 
 graph = build_graph()
 
+def print_graph_ascii() -> None:
+    """
+    Print an ASCII representation of the LangGraph orchestrator.
+    """
+    underlying = graph.get_graph()
+    print(underlying.draw_ascii())
+
+def print_graph_mermaid() -> None:
+    """
+    Print Mermaid code for the LangGraph orchestrator.
+    You can paste this into https://mermaid.live to see a rendered diagram.
+    """
+    underlying = graph.get_graph()
+    mermaid_code = underlying.draw_mermaid()
+    print(mermaid_code)
 
 def optimize_routes_with_llm(payload: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -124,3 +139,4 @@ def optimize_routes_with_llm(payload: Dict[str, Any]) -> Dict[str, Any]:
         "total_eta_min": final_state["total_eta_min"],
         "reasoning": final_state["reasoning"],
     }
+

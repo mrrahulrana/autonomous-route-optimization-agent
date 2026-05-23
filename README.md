@@ -63,3 +63,7 @@ tests/            # Unit and API tests
 docs/             # Architecture and diagrams
 docker/           # Dockerfile
 ```
+
+## Orchestrator LLM workflow
+
+![Workflow](image.png)

@@ -6,12 +6,28 @@ from app.api.schemas import (
 )
 from app.agents.orchestrator import optimize_routes as optimize_non_llm
 from app.agents.orchestrator_llm import optimize_routes_with_llm
+from app.orchestration.orchestrator import RouteOptimizationOrchestrator
 
-router = APIRouter()
+router = APIRouter(prefix="/api", tags=["route-optimization"])
+orchestrator = RouteOptimizationOrchestrator()
 
 @router.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
     return HealthResponse(status="ok")
+
+@router.post("/optimize")
+def optimize_routes(payload: dict):
+    """
+    Optimize routes for the supplied fleet and delivery requests.
+    """
+
+    vehicles = payload.get("vehicles", [])
+    delivery_requests = payload.get("delivery_requests", [])
+
+    return orchestrator.run(
+        vehicles=vehicles,
+        delivery_requests=delivery_requests,
+    )
 
 
 @router.post("/optimize_routes", response_model=OptimizeResponse)
